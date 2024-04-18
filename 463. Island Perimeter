@@ -1,0 +1,23 @@
+class Solution {
+    public int islandPerimeter(int[][] grid) {
+        int perimeter = 0;
+        
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] == 1) {
+                    perimeter += 4; // Assume all sides are land
+                    
+                    // Check up
+                    if (i > 0 && grid[i - 1][j] == 1)
+                        perimeter -= 2; // Subtract 2 if the upper side is also land
+                    
+                    // Check left
+                    if (j > 0 && grid[i][j - 1] == 1)
+                        perimeter -= 2; // Subtract 2 if the left side is also land
+                }
+            }
+        }
+        
+        return perimeter;
+    }
+}
